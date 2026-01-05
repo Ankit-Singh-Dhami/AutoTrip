@@ -1,3 +1,5 @@
+import { SignInButton } from "@clerk/nextjs";
+
 const Header = () => {
   return (
     <header className="w-full border-b bg-white">
@@ -37,9 +39,11 @@ const Header = () => {
         </nav>
 
         {/* Right: Button */}
-        <button className="rounded-full bg-orange-600 px-5 py-2 text-sm font-medium text-white hover:bg-orange-700 transition">
-          Get Started
-        </button>
+        <SignInButton>
+          <button className="rounded-full bg-orange-600 px-5 py-2 text-sm font-medium text-white hover:bg-orange-700 transition">
+            Get Started
+          </button>
+        </SignInButton>
       </div>
     </header>
   );

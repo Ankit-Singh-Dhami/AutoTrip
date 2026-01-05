@@ -1,8 +1,15 @@
+import { useUser } from "@clerk/nextjs";
 import Footer from "./_components/Footer";
 import Header from "./_components/Header";
 import Hero from "./_components/Hero";
 
 const Home = () => {
+  const { user } = useUser();
+
+  if (user) {
+    console.log(user);
+  }
+
   return (
     <div>
       <Header />
