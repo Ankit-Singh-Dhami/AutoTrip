@@ -1,15 +1,8 @@
-import { useUser } from "@clerk/nextjs";
-import Footer from "./_components/Footer";
 import Header from "./_components/Header";
 import Hero from "./_components/Hero";
+import Footer from "./_components/Footer";
 
-const Home = () => {
-  const { user } = useUser();
-
-  if (user) {
-    console.log(user);
-  }
-
+export default function Home() {
   return (
     <div>
       <Header />
@@ -17,6 +10,4 @@ const Home = () => {
       <Footer />
     </div>
   );
-};
-
-export default Home;
+}

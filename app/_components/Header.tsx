@@ -1,6 +1,17 @@
-import { SignInButton } from "@clerk/nextjs";
+"use client";
+
+import { SignInButton, useUser } from "@clerk/nextjs";
+import { useRouter } from "next/navigation";
 
 const Header = () => {
+  const { user, isLoaded } = useUser();
+  const router = useRouter();
+
+  const handleCreateTrip = () => {
+    // Navigate to trip creation page
+    router.push("/create-new-trip"); // Change this to your route
+  };
+
   return (
     <header className="w-full border-b bg-white">
       <div className="mx-auto max-w-7xl px-6 py-4 flex items-center justify-between">
@@ -39,11 +50,20 @@ const Header = () => {
         </nav>
 
         {/* Right: Button */}
-        <SignInButton>
-          <button className="rounded-full bg-orange-600 px-5 py-2 text-sm font-medium text-white hover:bg-orange-700 transition">
-            Get Started
+        {isLoaded && user ? (
+          <button
+            onClick={handleCreateTrip}
+            className="rounded-full bg-orange-600 px-5 py-2 text-sm font-medium text-white hover:bg-orange-700 transition"
+          >
+            Create New Trip
           </button>
-        </SignInButton>
+        ) : (
+          <SignInButton>
+            <button className="rounded-full bg-orange-600 px-5 py-2 text-sm font-medium text-white hover:bg-orange-700 transition">
+              Get Started
+            </button>
+          </SignInButton>
+        )}
       </div>
     </header>
   );
